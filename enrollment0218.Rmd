@@ -14,13 +14,13 @@ library(reprex)
 ```
 
 ```{r}
-enrollment_data <- read_excel("class_enrollment_summary_by_term2.18.20.xlsx", skip = 3) %>%
+department_data <- read_excel("class_enrollment_summary_by_term2.18.20.xlsx", skip = 3) %>%
   clean_names() %>%
-  filter(! is.na(course_department) & ! is.na(course_name)) %>%
-  group_by(course_department, course_name) %>%
+  filter(! is.na(course_department)) %>%
+  group_by(course_department) %>%
   summarise(total = sum(total)) %>%
   arrange(desc(total))
-enrollment_data
+department_data
 ```
 
 

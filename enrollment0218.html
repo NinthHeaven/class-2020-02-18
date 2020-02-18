@@ -369,28 +369,27 @@ summary {
 </div>
 
 
-<pre class="r"><code>enrollment_data &lt;- read_excel(&quot;class_enrollment_summary_by_term2.18.20.xlsx&quot;, skip = 3) %&gt;%
+<pre class="r"><code>department_data &lt;- read_excel(&quot;class_enrollment_summary_by_term2.18.20.xlsx&quot;, skip = 3) %&gt;%
   clean_names() %&gt;%
-  filter(! is.na(course_department) &amp; ! is.na(course_name)) %&gt;%
-  group_by(course_department, course_name) %&gt;%
+  filter(! is.na(course_department)) %&gt;%
+  group_by(course_department) %&gt;%
   summarise(total = sum(total)) %&gt;%
   arrange(desc(total))
-enrollment_data</code></pre>
-<pre><code>## # A tibble: 2,202 x 3
-## # Groups:   course_department [79]
-##    course_department            course_name                    total
-##    &lt;chr&gt;                        &lt;chr&gt;                          &lt;dbl&gt;
-##  1 Expository Writing           Expository Writing 20            861
-##  2 Economics                    Principles of Economics          527
-##  3 Molecular &amp; Cellular Biology Intro to Life Sciences II        410
-##  4 Economics                    Big Data                         382
-##  5 Chemistry &amp; Chemical Biology Frontiers of Modern Chemistry    352
-##  6 Mathematics                  Linear Algebra &amp; Differntl Equ   289
-##  7 Computer Science             Data Structures and Algorithms   277
-##  8 Chemistry &amp; Chemical Biology Organic Chemistry of Life        261
-##  9 General Education            Making Chng When Chng is Hard    259
-## 10 Economics                    Intermediate Macroeconomics      244
-## # ... with 2,192 more rows</code></pre>
+department_data</code></pre>
+<pre><code>## # A tibble: 79 x 2
+##    course_department            total
+##    &lt;chr&gt;                        &lt;dbl&gt;
+##  1 General Education             3699
+##  2 Economics                     3289
+##  3 Computer Science              1852
+##  4 Mathematics                   1753
+##  5 Government                    1734
+##  6 Psychology                    1520
+##  7 Medical Sciences              1307
+##  8 Physics                       1177
+##  9 History                       1070
+## 10 Chemistry &amp; Chemical Biology   992
+## # ... with 69 more rows</code></pre>
 
 
 
